@@ -23,7 +23,7 @@ spec:
         - name: OPTION_LIBS
           value: ignite-kubernetes,ignite-rest-http
         - name: CONFIG_URI
-          value: https://raw.githubusercontent.com/apache/ignite/master/modules/kubernetes/config/example-kube-persistence.xml
+          value: https://github.com/VishnuGupta16/minikube-ignite/blob/master/example-kube-persistence.xml
         - name: IGNITE_QUIET
           value: "false"
         - name: JVM_OPTS
