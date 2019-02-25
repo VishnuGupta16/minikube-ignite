@@ -1,0 +1,44 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:  
+  name: ignite-client
+  namespace: ignite  
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app1: ignite1
+  serviceName: ignite
+  template:
+    metadata:      
+      labels:
+        app: ignite
+        app1: ignite1
+    spec:
+      containers:
+      - image: guptavishnu/ignite:1.0.5
+        imagePullPolicy: IfNotPresent
+        name: ignite
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: ignite
+      serviceAccountName: ignite
+      terminationGracePeriodSeconds: 30
+  updateStrategy:
+    rollingUpdate:
+      partition: 0
+    type: RollingUpdate

@@ -27,7 +27,9 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean class="org.apache.ignite.configuration.IgniteConfiguration">
+
         <property name="peerClassLoadingEnabled" value="true" />
+
         <!-- Enabling Apache Ignite Persistent Store. -->
         <property name="dataStorageConfiguration">
             <bean class="org.apache.ignite.configuration.DataStorageConfiguration">
